@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { GiScrollQuill } from 'react-icons/gi';
 import { GiBookshelf } from 'react-icons/gi';
 import { FaUserEdit } from 'react-icons/fa';
-import { BsFillInfoCircleFill } from 'react-icons/bs';
+import { TiInfoLarge } from 'react-icons/ti';
 import './Navigation.css';
 
 export default function Navigation() {
@@ -22,7 +22,7 @@ export default function Navigation() {
         <FaUserEdit />
       </NavLink>
       <NavLink to="about" alt="about" title="about">
-        <BsFillInfoCircleFill />
+        <TiInfoLarge />
       </NavLink>
     </nav>
   );
