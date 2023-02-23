@@ -11,7 +11,7 @@ export default function Welcome() {
   const user = useUser();
   const navigate = useNavigate();
 
-  if (user) return <Navigate to="/" />;
+  if (user) return <Navigate to="spells" />;
 
   return (
     <main className="welcome">

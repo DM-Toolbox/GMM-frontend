@@ -21,7 +21,7 @@ function App() {
         <Route path="signin" element={<SignInForm />} />
       </Route>
       <Route element={<ProtectedRoute />}>
-        <Route element={<Layout />}>
+        <Route path="/" element={<Layout />}>
           {/* <Route index element={<TBD />} /> */}
           <Route path="spells" element={<SpellList />} />
           <Route
@@ -34,7 +34,7 @@ function App() {
       </Route>
       <Route
         path="*"
-        element={<Navigate to="spells" replace />}
+        element={<Navigate to="welcome" replace />}
       />
     </Routes>
   );

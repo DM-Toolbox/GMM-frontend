@@ -1,4 +1,5 @@
-import { get, patch } from './requests';
+// import { get, patch } from './requests';
+import { get } from './requests';
 //TODO switch this over after deploy
 // const URL = 'https://gmm.herokuapp.com/api/v1/users';
 const URL = 'http://localhost:7890/api/v1/users';
