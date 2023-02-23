@@ -23,7 +23,6 @@ export default function SignInForm() {
         placeholder="Email"
         name="email"
         type="email"
-        // required
         value={credentials.email}
         onChange={handleChange}
       />
@@ -34,7 +33,6 @@ export default function SignInForm() {
         placeholder="Username"
         name="username"
         type="username"
-        // required
         value={credentials.username}
         onChange={handleChange}
       />

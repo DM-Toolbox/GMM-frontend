@@ -9,17 +9,9 @@ import './Welcome.css';
 
 export default function Welcome() {
   const user = useUser();
-  if (user) return <Navigate to="/" />;
-
   const navigate = useNavigate();
 
-  const signUpRedirect = () => {
-    navigate('signup');
-  };
-
-  const signInRedirect = () => {
-    navigate('signin');
-  };
+  if (user) return <Navigate to="/" />;
 
   return (
     <main className="welcome">
@@ -27,7 +19,9 @@ export default function Welcome() {
         className="signUpButton"
         alt="create new account"
         title="Create New Account"
-        onClick={signUpRedirect}
+        onClick={() => {
+          navigate('signup');
+        }}
       >
         get started
       </button>
@@ -35,7 +29,9 @@ export default function Welcome() {
         className="signInButton"
         alt="sign in"
         title="Sign In"
-        onClick={signInRedirect}
+        onClick={() => {
+          navigate('signin');
+        }}
       >
         I already have an account
       </button>
