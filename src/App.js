@@ -10,6 +10,7 @@ import SignInForm from './components/LandingPage/SignInForm';
 import SignUpForm from './components/LandingPage/SignUpForm';
 import SpellList from './components/SpellListPage/SpellList';
 import Welcome from './components/LandingPage/Welcome';
+import SpellCompendium from './components/SpellCompendiumPage/SpellCompendium';
 
 function App() {
   return (
@@ -23,6 +24,10 @@ function App() {
         <Route element={<Layout />}>
           {/* <Route index element={<TBD />} /> */}
           <Route path="spells" element={<SpellList />} />
+          <Route
+            path="compendium"
+            element={<SpellCompendium />}
+          />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="about" element={<AboutPage />} />
         </Route>
