@@ -1,27 +1,11 @@
-import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {
-  useAuth,
-  // useUser,
-} from '../../context/UserContext';
-import { getUserById } from '../../services/users';
+import { useAuth } from '../../context/UserContext';
 import './Header.css';
+import UserInfo from './UserInfo';
 
 export default function Header() {
-  // const { userInfo } = useUser();
-  const [userInfo, setUserInfo] = useState([]);
-
   const { signOut } = useAuth();
   const navigate = useNavigate();
-
-  const fetchUserInfo = async () => {
-    const results = await getUserById();
-    setUserInfo(results.data);
-  };
-
-  useEffect(() => {
-    fetchUserInfo();
-  }, []);
 
   const handleSignOut = async () => {
     await signOut();
@@ -31,10 +15,7 @@ export default function Header() {
   return (
     <header>
       <div className="infoAndSignOut">
-        <div className="userInfo">
-          <p className="username">{userInfo.username}</p>
-          <p className="username">{userInfo.charName}</p>
-        </div>
+        <UserInfo />
         <button className="signOut" onClick={handleSignOut}>
           Sign Out
         </button>

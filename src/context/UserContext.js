@@ -2,7 +2,7 @@ import {
   useState,
   useContext,
   createContext,
-  // useEffect,
+  useEffect,
 } from 'react';
 
 import {
@@ -13,6 +13,8 @@ import {
   storeLocalUser,
   // verifyUser,
 } from '../services/auth.js';
+
+import { getUserById } from '../services/users';
 
 const UserContext = createContext();
 
@@ -56,6 +58,21 @@ export default function UserProvider({ children }) {
 export function useUser() {
   const { user } = useContext(UserContext);
   return user;
+}
+
+export function useUserInfo() {
+  const [userInfo, setUserInfo] = useState([]);
+
+  const fetchUserInfo = async () => {
+    const results = await getUserById();
+    setUserInfo(results.data);
+  };
+
+  useEffect(() => {
+    fetchUserInfo();
+  }, []);
+
+  return { userInfo };
 }
 
 export function useAuth() {
