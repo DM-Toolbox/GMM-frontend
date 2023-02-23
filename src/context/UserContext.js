@@ -2,7 +2,7 @@ import {
   useState,
   useContext,
   createContext,
-  useEffect,
+  // useEffect,
 } from 'react';
 
 import {
@@ -11,7 +11,7 @@ import {
   signOutUser,
   getLocalUser,
   storeLocalUser,
-  verifyUser,
+  // verifyUser,
 } from '../services/auth.js';
 
 const UserContext = createContext();
@@ -22,15 +22,17 @@ export default function UserProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   //TODO figure out what this whole ball o wax is doing
-  const verify = async () => {
-    const response = await verifyUser();
-    setUser(response.user || null);
-    setLoading(false);
-  };
+  //? it looks like this was functioning as it should and throwing a 401 on page load since !user
+  //? keeping it turned off for now to keep errors clear
+  // const verify = async () => {
+  //   const response = await verifyUser();
+  //   setUser(response.user || null);
+  //   setLoading(false);
+  // };
 
-  useEffect(() => {
-    verify();
-  }, []);
+  // useEffect(() => {
+  //   verify();
+  // }, []);
 
   const setUser = (user) => {
     storeLocalUser(user);
