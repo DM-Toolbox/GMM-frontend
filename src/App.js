@@ -1,19 +1,20 @@
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import Auth from './components/Auth/Auth';
-import Header from './components/Header/Header';
+
+import LandingPage from './components/LandingPage/LandingPage';
+import SignInForm from './components/LandingPage/SignInForm';
+import SignUpForm from './components/LandingPage/SignUpForm';
+import Welcome from './components/LandingPage/Welcome';
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <Switch>
-        <Route path="/auth/:type" component={Auth} />
-        <Route path="*">
-          <Redirect to="/auth/sign-in" />
-        </Route>
-      </Switch>
-    </div>
+    <Routes>
+      <Route path="welcome" element={<LandingPage />}>
+        <Route index element={<Welcome />} />
+        <Route path="signup" element={<SignUpForm />} />
+        <Route path="signin" element={<SignInForm />} />
+      </Route>
+    </Routes>
   );
 }
 

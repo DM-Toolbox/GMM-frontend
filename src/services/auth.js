@@ -1,20 +1,50 @@
-import { client } from './client';
+import { get, post, del } from './requests.js';
 
-export function getUser() {
-  return client.auth.currentUser;
+//TODO switch this over after deploy
+// const URL = 'https://gmm.herokuapp.com/api/v1/users';
+const URL = 'http://localhost:7890/api/v1/users';
+
+export async function signUpUser(info) {
+  const response = await post(`${URL}/`, info);
+  response.user = response.data;
+  return response;
 }
 
-export async function authUser(email, password, type) {
-  let response;
-  if (type === 'sign-up') {
-    response = await client.auth.signUp({ email, password });
+export async function signInUser(info) {
+  const response = await post(`${URL}/sessions`, info);
+  response.user = response.data;
+  return response;
+}
+
+export async function signOutUser() {
+  const response = await del(`${URL}/sessions`);
+  localStorage.removeItem(USER_KEY);
+  return response;
+}
+
+export async function verifyUser() {
+  const response = await get(`${URL}/me`);
+  response.user = response.data;
+  return response;
+}
+
+const USER_KEY = 'USER';
+
+export function storeLocalUser(user) {
+  if (user) {
+    localStorage.setItem(USER_KEY, JSON.stringify(user));
   } else {
-    response = await client.auth.signIn({ email, password });
+    localStorage.removeItem(USER_KEY);
   }
-
-  return response.user;
 }
 
-export async function signOut() {
-  await client.auth.signOut();
+export function getLocalUser() {
+  const json = localStorage.getItem(USER_KEY);
+  try {
+    if (json) {
+      return JSON.parse(json);
+    }
+  } catch (e) {
+    storeLocalUser();
+  }
 }
