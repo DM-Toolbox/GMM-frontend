@@ -11,7 +11,7 @@ import {
   signOutUser,
   getLocalUser,
   storeLocalUser,
-  // verifyUser,
+  verifyUser,
 } from '../services/auth.js';
 
 const UserContext = createContext();
@@ -22,15 +22,15 @@ export default function UserProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   //TODO figure out what this whole ball o wax is doing
-  // const verify = async () => {
-  //   const response = await verifyUser();
-  //   setUser(response.user || null);
-  //   setLoading(false);
-  // };
+  const verify = async () => {
+    const response = await verifyUser();
+    setUser(response.user || null);
+    setLoading(false);
+  };
 
-  // useEffect(() => {
-  //   verify();
-  // }, []);
+  useEffect(() => {
+    verify();
+  }, []);
 
   const setUser = (user) => {
     storeLocalUser(user);

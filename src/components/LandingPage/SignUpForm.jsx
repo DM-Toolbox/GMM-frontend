@@ -7,7 +7,7 @@ export default function SignUpForm() {
   const { signUp, error } = useAuth();
   const [credentials, handleChange] = useForm({
     email: '',
-    username: '',
+    // username: '',
     password: '',
   });
 
@@ -20,14 +20,14 @@ export default function SignUpForm() {
     <form className="signUpForm" onSubmit={handleSubmit}>
       <h2>Create an account</h2>
 
-      <InputControl
+      {/* <InputControl
         placeholder="Username"
         name="username"
         type="username"
         required
         value={credentials.username}
         onChange={handleChange}
-      />
+      /> */}
 
       <InputControl
         placeholder="Email"
