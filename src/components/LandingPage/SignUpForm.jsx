@@ -7,6 +7,7 @@ export default function SignUpForm() {
   const { signUp, error } = useAuth();
   const [credentials, handleChange] = useForm({
     email: '',
+    username: '',
     password: '',
   });
 
@@ -45,9 +46,7 @@ export default function SignUpForm() {
         value={credentials.password}
         onChange={handleChange}
       />
-
       <button>Submit</button>
-
       <p className="error">{error}</p>
     </form>
   );

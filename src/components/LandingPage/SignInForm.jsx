@@ -27,7 +27,9 @@ export default function SignInForm() {
         value={credentials.email}
         onChange={handleChange}
       />
+
       <span>---or---</span>
+
       <InputControl
         placeholder="Username"
         name="username"
