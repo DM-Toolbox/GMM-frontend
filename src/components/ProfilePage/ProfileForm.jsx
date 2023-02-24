@@ -19,8 +19,9 @@ export default function ProfileForm() {
     event.preventDefault();
     await updateUserInfo(userInfo.id, { updatedInfo });
 
-    //TODO so this 'works' but it treats it as an unknown path and redirects to spells. Better UX would show the updates on the profile page
-    navigate('profile');
+    // TODO so this 'works' but it treats it as an unknown path and redirects to spells. Better UX would show the updates on the profile page, but maybe I leave it?
+    //? UPDATE with the / it now redirects as it should, but the UserInfo component in the header doesn't refresh...
+    navigate('/profile');
   };
 
   return (
