@@ -11,7 +11,7 @@ export default function Auth() {
   const user = useUser();
   const navigate = useNavigate();
 
-  if (user) return <Navigate to="spells" />;
+  if (user) return <Navigate to="spell-list" />;
 
   return (
     <main className="auth">
@@ -20,7 +20,7 @@ export default function Auth() {
         alt="create new account"
         title="Create New Account"
         onClick={() => {
-          navigate('signup');
+          navigate('sign-up');
         }}
       >
         get started
@@ -30,7 +30,7 @@ export default function Auth() {
         alt="sign in"
         title="Sign In"
         onClick={() => {
-          navigate('signin');
+          navigate('sign-in');
         }}
       >
         I already have an account

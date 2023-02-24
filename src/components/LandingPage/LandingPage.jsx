@@ -4,7 +4,7 @@ import './LandingPage.css';
 
 export default function LandingPage() {
   const user = useUser();
-  if (user) return <Navigate to="spells" />;
+  if (user) return <Navigate to="spell-list" />;
 
   return (
     <main className="landingPage">

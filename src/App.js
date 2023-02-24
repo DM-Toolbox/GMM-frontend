@@ -18,14 +18,17 @@ function App() {
     <Routes>
       <Route path="welcome" element={<LandingPage />}>
         <Route index element={<Auth />} />
-        <Route path="signup" element={<SignUpForm />} />
-        <Route path="signin" element={<SignInForm />} />
+        <Route path="sign-up" element={<SignUpForm />} />
+        <Route path="sign-in" element={<SignInForm />} />
       </Route>
       <Route element={<ProtectedRoute />}>
         <Route element={<Layout />}>
-          <Route path="spells" element={<SpellList />} />
           <Route
-            path="compendium"
+            path="spell-list"
+            element={<SpellList />}
+          />
+          <Route
+            path="spell-compendium"
             element={<SpellCompendium />}
           />
           <Route path="profile" element={<ProfilePage />} />
@@ -39,7 +42,7 @@ function App() {
       </Route>
       <Route
         path="*"
-        element={<Navigate to="spells" replace />}
+        element={<Navigate to="spell-list" replace />}
       />
     </Routes>
   );

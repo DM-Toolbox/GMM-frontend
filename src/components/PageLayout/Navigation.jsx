@@ -8,11 +8,15 @@ import './Navigation.css';
 export default function Navigation() {
   return (
     <nav className="navigation">
-      <NavLink to="spells" alt="home" title="Spell List">
+      <NavLink
+        to="spell-list"
+        alt="home"
+        title="Spell List"
+      >
         <GiScrollQuill />
       </NavLink>
       <NavLink
-        to="compendium"
+        to="spell-compendium"
         alt="compendium"
         title="Spell Compendium"
       >
