@@ -1,21 +1,26 @@
+import { useNavigate } from 'react-router-dom';
 import { useUserInfo } from '../../context/UserContext';
 import { updateUserInfo } from '../../services/users';
 import { useForm } from '../Forms/useForm';
 import './ProfileForm.css';
 
 export default function ProfileForm() {
+  const navigate = useNavigate();
   const { userInfo } = useUserInfo();
   const [updatedInfo, handleChange] = useForm({
-    username: '',
-    charName: '',
-    charClass: '',
-    casterLvl: '',
-    avatarUrl: '',
+    username: userInfo.username,
+    charName: userInfo.charName,
+    charClass: userInfo.charClass,
+    casterLvl: userInfo.casterLvl,
+    // avatarUrl: '',
   });
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await updateUserInfo(userInfo.id, updatedInfo);
+    await updateUserInfo(userInfo.id, { updatedInfo });
+
+    //TODO so this 'works' but it treats it as an unknown path and redirects to spells. Better UX would show the updates on the profile page
+    navigate('profile');
   };
 
   return (
@@ -27,25 +32,23 @@ export default function ProfileForm() {
         placeholder={userInfo.username}
         name="username"
         type="text"
-        required={userInfo.username === null ? true : false}
+        required={!userInfo.username ? true : false}
         value={updatedInfo.username}
         onChange={handleChange}
       />
 
       <input
         placeholder={userInfo.charName}
-        name="character name"
+        name="charName"
         type="text"
-        required={userInfo.charName === null ? true : false}
+        required={!userInfo.charName ? true : false}
         value={updatedInfo.charName}
         onChange={handleChange}
       />
 
       <select
-        name="character class"
-        required={
-          userInfo.charClass === null ? true : false
-        }
+        name="charClass"
+        required={!userInfo.charClass ? true : false}
         value={updatedInfo.charClass}
         onChange={handleChange}
       >
@@ -55,13 +58,18 @@ export default function ProfileForm() {
             : userInfo.charClass}
         </option>
         {/* //TODO decide if I should hardcode or map these bois */}
+        <option value="Artificer">Artificer</option>
+        <option value="Bard">Bard</option>
+        <option value="Cleric">Cleric</option>
+        <option value="Druid">Druid</option>
+        <option value="Sorcerer">Sorcerer</option>
+        <option value="Warlock">Warlock</option>
+        <option value="Wizard">Wizard</option>
       </select>
 
       <select
-        name="caster level"
-        required={
-          userInfo.casterLvl === null ? true : false
-        }
+        name="casterLvl"
+        required={!userInfo.casterLvl ? true : false}
         value={updatedInfo.casterLvl}
         onChange={handleChange}
       >

@@ -13,7 +13,9 @@ export default function UserInfo() {
         <p>Caster Level: {userInfo.casterLvl}</p>
       </div>
       {/* //TODO sort out avatar stuff */}
-      {userInfo.avatar && <img alt="user avatar" src="" />}
+      {userInfo.avatarUrl && (
+        <img alt="user avatar" src="" />
+      )}
     </div>
   );
 }
