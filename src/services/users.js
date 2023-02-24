@@ -1,5 +1,5 @@
-// import { get, patch } from './requests';
-import { get } from './requests';
+import { get, patch } from './requests';
+
 //TODO switch this over after deploy
 // const URL = 'https://gmm.herokuapp.com/api/v1/users';
 const URL = 'http://localhost:7890/api/v1/users';
@@ -10,7 +10,7 @@ export async function getUserById(id) {
   return response;
 }
 
-// export async function updateUserInfo(id, userInfoUpdates) {
-//   const response = await patch(`${URL}/${id}`, userInfoUpdates);
-//   return response.body;
-// }
+export async function updateUserInfo(id, { updatedInfo }) {
+  const response = await patch(`${URL}/${id}`, updatedInfo);
+  return response.body;
+}

@@ -5,16 +5,16 @@ import {
 } from 'react-router-dom';
 import { useUser } from '../../context/UserContext';
 
-import './Welcome.css';
+import './Auth.css';
 
-export default function Welcome() {
+export default function Auth() {
   const user = useUser();
   const navigate = useNavigate();
 
   if (user) return <Navigate to="spells" />;
 
   return (
-    <main className="welcome">
+    <main className="auth">
       <button
         className="signUpButton"
         alt="create new account"

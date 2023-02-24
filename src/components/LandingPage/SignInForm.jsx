@@ -1,5 +1,4 @@
 import { useAuth } from '../../context/UserContext';
-import { InputControl } from '../Forms/FormControls';
 import { useForm } from '../Forms/useForm';
 import './SignInUp.css';
 
@@ -19,7 +18,7 @@ export default function SignInForm() {
   return (
     <form className="signInForm" onSubmit={handleSubmit}>
       <h2>Sign In</h2>
-      <InputControl
+      <input
         placeholder="Email"
         name="email"
         type="email"
@@ -29,14 +28,14 @@ export default function SignInForm() {
 
       <span>---or---</span>
 
-      <InputControl
+      <input
         placeholder="Username"
         name="username"
         type="username"
         value={credentials.username}
         onChange={handleChange}
       />
-      <InputControl
+      <input
         placeholder="Password"
         name="password"
         type="password"
