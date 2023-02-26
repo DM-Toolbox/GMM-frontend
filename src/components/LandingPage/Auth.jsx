@@ -1,17 +1,17 @@
 import {
-  Navigate,
+  // Navigate,
   Outlet,
   useNavigate,
 } from 'react-router-dom';
-import { useUser } from '../../context/UserContext';
+// import { useUser } from '../../context/UserContext';
 
 import './Auth.css';
 
 export default function Auth() {
-  const user = useUser();
+  // const user = useUser();
   const navigate = useNavigate();
 
-  if (user) return <Navigate to="spell-list" />;
+  // if (user) return <Navigate to="spell-list" />;
 
   return (
     <main className="auth">

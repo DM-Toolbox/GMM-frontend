@@ -51,7 +51,7 @@ export default function SignInForm() {
       </form>
       <button
         onClick={() => {
-          navigate('welcome');
+          navigate('/welcome');
         }}
       >
         Back

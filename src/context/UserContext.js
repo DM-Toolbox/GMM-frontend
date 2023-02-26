@@ -22,6 +22,7 @@ export default function UserProvider({ children }) {
   const localUser = getLocalUser();
   const [user, setUserState] = useState(localUser);
   const [loading, setLoading] = useState(true);
+  const [userInfo, setUserInfo] = useState({});
 
   //TODO figure out what this whole ball o wax is doing
   //? it looks like this was functioning as it should and throwing a 401 on page load since !user
@@ -46,6 +47,8 @@ export default function UserProvider({ children }) {
     setUser,
     loading,
     setLoading,
+    userInfo,
+    setUserInfo,
   };
 
   return (
@@ -61,7 +64,7 @@ export function useUser() {
 }
 
 export function useUserInfo() {
-  const [userInfo, setUserInfo] = useState([]);
+  const { userInfo, setUserInfo } = useContext(UserContext);
 
   const fetchUserInfo = async () => {
     const results = await getUserById();
@@ -72,7 +75,7 @@ export function useUserInfo() {
     fetchUserInfo();
   }, []);
 
-  return { userInfo };
+  return { userInfo, fetchUserInfo };
 }
 
 export function useAuth() {

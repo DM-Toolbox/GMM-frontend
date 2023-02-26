@@ -1,4 +1,5 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+// import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 
 import AboutPage from './components/AboutPage/AboutPage';
@@ -31,19 +32,18 @@ function App() {
             path="spell-compendium"
             element={<SpellCompendium />}
           />
-          <Route path="profile" element={<ProfilePage />} />
-          <Route
-            path="profile/edit"
-            element={<ProfileForm />}
-          />
+          <Route path="profile">
+            <Route index element={<ProfilePage />} />
+            <Route path="edit" element={<ProfileForm />} />
+          </Route>
 
           <Route path="about" element={<AboutPage />} />
         </Route>
       </Route>
-      <Route
+      {/* <Route
         path="*"
         element={<Navigate to="spell-list" replace />}
-      />
+      /> */}
     </Routes>
   );
 }

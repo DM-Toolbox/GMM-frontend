@@ -14,6 +14,7 @@ export default function SignUpForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     await signUp(credentials);
+    navigate('/profile/edit');
   };
 
   return (
@@ -43,7 +44,7 @@ export default function SignUpForm() {
       </form>
       <button
         onClick={() => {
-          navigate('welcome');
+          navigate('/welcome');
         }}
       >
         Back

@@ -11,7 +11,8 @@ export default function Layout() {
   // const user = useUser();
   // if (!user) return <Navigate to="/" />;
   // console.log(userInfo);
-  // if (!userInfo.username) return <Navigate to="profile" />;
+  // if (!userInfo.username)
+  //   return <Navigate to="/profile/edit" />;
 
   return (
     <div className="Layout">
