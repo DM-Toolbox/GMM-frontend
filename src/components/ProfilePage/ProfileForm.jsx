@@ -12,7 +12,7 @@ export default function ProfileForm() {
     username: userInfo.username || '',
     charName: userInfo.charName || '',
     charClass: userInfo.charClass || '',
-    casterLvl: userInfo.casterLvl || '',
+    charLvl: userInfo.charLvl || '',
     // avatarUrl: '',
   });
   const handleSubmit = async (event) => {
@@ -29,7 +29,11 @@ export default function ProfileForm() {
         onSubmit={handleSubmit}
       >
         <input
-          placeholder={userInfo.username}
+          placeholder={
+            !userInfo.username
+              ? 'Username'
+              : userInfo.username
+          }
           name="username"
           type="text"
           required={!userInfo.username ? true : false}
@@ -38,7 +42,11 @@ export default function ProfileForm() {
         />
 
         <input
-          placeholder={userInfo.charName}
+          placeholder={
+            !userInfo.charName
+              ? 'Character name'
+              : userInfo.charName
+          }
           name="charName"
           type="text"
           required={!userInfo.charName ? true : false}
@@ -54,7 +62,7 @@ export default function ProfileForm() {
         >
           <option value="">
             {!userInfo.charClass
-              ? 'Please choose one'
+              ? 'Character Class'
               : userInfo.charClass}
           </option>
           {/* //TODO decide if I should hardcode or map these bois */}
@@ -68,17 +76,16 @@ export default function ProfileForm() {
         </select>
 
         <select
-          name="casterLvl"
-          required={!userInfo.casterLvl ? true : false}
-          value={updatedInfo.casterLvl}
+          name="charLvl"
+          required={!userInfo.charLvl ? true : false}
+          value={updatedInfo.charLvl}
           onChange={handleChange}
         >
           <option value="">
-            {!userInfo.casterLvl
-              ? 'Please choose one'
-              : userInfo.casterLvl}
+            {!userInfo.charLvl
+              ? 'Character Level'
+              : userInfo.charLvl}
           </option>
-          <option value="0">0</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -88,6 +95,17 @@ export default function ProfileForm() {
           <option value="7">7</option>
           <option value="8">8</option>
           <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
         </select>
 
         <button>Submit</button>

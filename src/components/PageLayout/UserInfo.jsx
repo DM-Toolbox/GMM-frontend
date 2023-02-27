@@ -10,7 +10,9 @@ export default function UserInfo() {
         <p>{userInfo.username}</p>
         <p>{userInfo.charName}</p>
         <p>{userInfo.charClass}</p>
-        <p>Caster Level: {userInfo.casterLvl}</p>
+        {userInfo.charLvl && (
+          <p>Level: {userInfo.charLvl}</p>
+        )}
       </div>
       {/* //TODO sort out avatar stuff */}
       {userInfo.avatarUrl && (

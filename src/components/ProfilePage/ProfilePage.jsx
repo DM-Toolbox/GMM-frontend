@@ -13,7 +13,7 @@ export default function ProfilePage() {
         <p>{userInfo.username}</p>
         <p>{userInfo.charName}</p>
         <p>{userInfo.charClass}</p>
-        <p>Caster Level: {userInfo.casterLvl}</p>
+        <p>Caster Level: {userInfo.charLvl}</p>
         {userInfo.avatarUrl ? (
           <img
             alt="user avatar"
