@@ -9,9 +9,9 @@ import './Layout.css';
 export default function Layout() {
   // const { userInfo } = useUserInfo();
   // const user = useUser();
-  // if (!user) return <Navigate to="/" />;
-  // console.log(userInfo);
-  // if (!userInfo.username)
+  // if (!user) return <Navigate to="/welcome" />;
+  // // console.log(userInfo);
+  // if (user && !userInfo.username)
   //   return <Navigate to="/profile/edit" />;
 
   return (

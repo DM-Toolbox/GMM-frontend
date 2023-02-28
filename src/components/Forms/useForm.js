@@ -8,7 +8,6 @@ function getValue(target) {
 
 export function useForm(initialData) {
   const [data, setData] = useState({ ...initialData });
-
   const handleChange = ({ target }) => {
     setData((data) => ({
       ...data,

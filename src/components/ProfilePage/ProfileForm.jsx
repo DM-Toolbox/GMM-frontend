@@ -1,3 +1,4 @@
+// import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUserInfo } from '../../context/UserContext';
 import { updateUserInfo } from '../../services/users';
@@ -6,13 +7,16 @@ import './ProfileForm.css';
 
 export default function ProfileForm() {
   const navigate = useNavigate();
+  // const [charClass, setCharClass] = useState('');
   const { userInfo, fetchUserInfo } = useUserInfo();
   const [updatedInfo, handleChange] = useForm({
+    // const [updatedInfo] = useForm({
     // adding a defined value to initial undefined state to avoid "uncontrolled to controlled input error"
     username: userInfo.username || '',
     charName: userInfo.charName || '',
     charClass: userInfo.charClass || '',
     charLvl: userInfo.charLvl || '',
+    charMod: userInfo.charMod || '',
     // avatarUrl: '',
   });
   const handleSubmit = async (event) => {
@@ -22,12 +26,17 @@ export default function ProfileForm() {
     navigate('/spell-compendium');
   };
 
+  // const handleClassChange = async (e) => {
+  //   setCharClass(e.target.value);
+  // };
+
   return (
     <>
       <form
         className="editProfileForm"
         onSubmit={handleSubmit}
       >
+        <span>Username</span>
         <input
           placeholder={
             !userInfo.username
@@ -41,6 +50,7 @@ export default function ProfileForm() {
           onChange={handleChange}
         />
 
+        <span>Character Name</span>
         <input
           placeholder={
             !userInfo.charName
@@ -54,27 +64,31 @@ export default function ProfileForm() {
           onChange={handleChange}
         />
 
+        <span>Character Class</span>
         <select
           name="charClass"
           required={!userInfo.charClass ? true : false}
           value={updatedInfo.charClass}
           onChange={handleChange}
         >
+          console.log(charClass)
           <option value="">
             {!userInfo.charClass
               ? 'Character Class'
               : userInfo.charClass}
           </option>
           {/* //TODO decide if I should hardcode or map these bois */}
-          <option value="Artificer">Artificer</option>
           <option value="Bard">Bard</option>
           <option value="Cleric">Cleric</option>
           <option value="Druid">Druid</option>
+          <option value="Paladin">Paladin</option>
+          <option value="Ranger">Ranger</option>
           <option value="Sorcerer">Sorcerer</option>
           <option value="Warlock">Warlock</option>
           <option value="Wizard">Wizard</option>
         </select>
 
+        <span>Character Level</span>
         <select
           name="charLvl"
           required={!userInfo.charLvl ? true : false}
@@ -108,15 +122,36 @@ export default function ProfileForm() {
           <option value="20">20</option>
         </select>
 
+        <span>Spellcasting Ability Modifier</span>
+        <select
+          name="charMod"
+          required={!userInfo.charMod ? true : false}
+          value={updatedInfo.charMod}
+          onChange={handleChange}
+        >
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+        </select>
+
         <button>Submit</button>
       </form>
-      <button
-        onClick={() => {
-          navigate('/profile');
-        }}
-      >
-        Back
-      </button>
+      {userInfo.username && (
+        <button
+          onClick={() => {
+            navigate('/profile');
+          }}
+        >
+          Back
+        </button>
+      )}
     </>
   );
 }
